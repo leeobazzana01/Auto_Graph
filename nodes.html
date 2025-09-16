@@ -282,8 +282,8 @@ function highlightFilter(filter) {
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": 1, "label": "qo", "shape": "dot"}, {"color": "#97c2fc", "id": 2, "label": "q1", "shape": "dot"}, {"color": "#3da831", "id": 3, "label": "q2", "shape": "dot"}, {"color": "#9131a8", "id": 4, "label": "q3", "shape": "dot"}, {"color": "#3155a8", "id": 5, "label": "q4", "shape": "dot"}]);
-                  edges = new vis.DataSet([{"from": 1, "label": "0/1", "to": 2}, {"from": 2, "label": "0/1", "to": 3}, {"from": 2, "to": 4}, {"from": 3, "to": 1}]);
+                  nodes = new vis.DataSet([{"color": "#3da831", "id": "q2", "label": "q2", "shape": "dot"}, {"color": "#3da831", "id": "q1", "label": "q1", "shape": "dot"}, {"color": "#3da831", "id": "q0", "label": "q0", "shape": "dot"}, {"color": "#3da831", "id": "q3", "label": "q3", "shape": "dot"}]);
+                  edges = new vis.DataSet([{"from": "q0", "label": 0, "to": "q0"}, {"from": "q1", "label": 0, "to": "q1"}, {"from": "q1", "label": 0, "to": "q2"}, {"from": "q1", "label": "\u03b5", "to": "q3"}, {"from": "q2", "label": 1, "to": "q3"}]);
 
                   nodeColors = {};
                   allNodes = nodes.get({ returnType: "Object" });
