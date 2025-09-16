@@ -27,8 +27,8 @@ def cria_arestas(net, transicoes):
     #adicionando nós
     todos_estados = set(transicoes.keys())
     for estado in todos_estados:
-        net.add_node(estado, label=estado, color="#3da831")  # cor opcional
-        
+        net.add_node(estado, label=estado, color="#0c35fe")  # cor opcional
+
     for origem, destinos in transicoes.items():
         for simbolo, lista_destinos in destinos.items():
             for destino in lista_destinos:
@@ -40,7 +40,7 @@ def cria_arestas(net, transicoes):
                     net.add_node(destino, label=destino)
                     todos_estados.add(destino)
                 #aresta c rótulo do símbolo
-                net.add_edge(origem, destino, label=simbolo)
+                net.add_edge(origem, destino, label=str(simbolo))
 
 
 def main():
