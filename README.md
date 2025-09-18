@@ -35,38 +35,153 @@ O Objetivo é, ao final do projeto, obter um software onde: o usuário insira o 
 
 ### Teoria dos Autômatos
 
-**1. Conceitos Básicos**
-    Definição de autômatos finitos (AFD, AFN, ε-AFN), alfabeto, estados, transições.
+**1. Fundamentos**
 
-**2. Identificação de Tipos de Autômatos**
-    Critérios para distinguir AFD, AFN e ε-AFN com base na tabela de transições.
+    Definições: alfabeto, estados, transições, estado inicial, estados finais.
 
-**3.Conversões entre Autômatos**
+    Autômato Finito Determinístico (AFD).
 
-    ε-AFN → AFN: Eliminação de transições vazias (ε-closure).
+    Autômato Finito Não Determinístico (AFN).
 
-    AFN → AFD: Algoritmo de construção de subconjuntos.
+    AFN com transições vazias (ε-AFN).
 
-    Minimização de AFD: Algoritmo de Hopcroft ou partição de estados.
+**2. Operações e Conversões**
 
-**4. Propriedades e Verificações**
+    ε-AFN → AFN (eliminação de ε-transições, ε-fecho).
 
-    Checar determinismo, acessibilidade de estados e equivalência entre autômatos.
+    AFN → AFD (construção do conjunto de estados).
 
+    Minimização de AFD (algoritmo de partição, Hopcroft).
 
+**3. Propriedades**
+
+    Identificação do tipo de autômato (determinístico, não determinístico, com ε).
+
+    Acessibilidade de estados (alcançáveis ou mortos).
+
+    Equivalência entre autômatos.
 ### Teoria dos Grafos
-**1. Fundamentos de Grafos**
-    Representação de grafos (matriz de adjacência, lista de adjacências).
-    Conceitos de vértices, arestas, direção e pesos (símbolos do autômato).
+**1. Fundamentos**
 
-**2.Algoritmos Relevantes**
+    Vértices e arestas.
 
-    Busca em profundidade (DFS) e largura (BFS) para análise de acessibilidade.
+    Grafos direcionados e ponderados.
 
-    Componentes fortemente conexos (para minimização de AFD).
+    Representações: matriz de adjacência, lista de adjacência.
 
-    Visualização com Pyvis
+**2. Algoritmos**
 
-    Mapeamento de estados e transições para nós e arestas.
+    Busca em largura (BFS).
 
-    Customização de layouts e interatividade.
+    Busca em profundidade (DFS).
+
+    Componentes conexos (importante para simplificação).
+
+**Aplicação**
+
+    Modelar estados como nós e transições como arestas.
+
+    Analisar conectividade e minimizar grafos.
+
+    Visualizar com pyvis.
+
+
+## Projeto: Roadmap
+
+**1. Estrutura Inicial**
+
+1. Definir estrutura de entrada
+
+    Leitura do arquivo .xlsx contendo estados, alfabeto, transições, estado inicial e finais.
+
+    Normalizar o formato interno dos dados (ex.: dicionário ou classe Automato).
+
+2. Criar representação do autômato
+
+    Estrutura de dados para armazenar:
+
+    Conjunto de estados
+
+    Alfabeto
+
+    Função de transição
+
+    Estado inicial
+
+    Estados finais
+
+**2. Identificação**
+
+1. Implementar verificação do tipo de autômato
+
+    Verificar presença de transições vazias (ε) → se existir → ε-AFN.
+
+    Verificar múltiplas transições para o mesmo símbolo a partir de um estado → AFN.
+
+    Caso cada par (estado, símbolo) leve a exatamente um destino → AFD.
+
+**3. Conversões**
+
+1. Implementar conversão ε-AFN → AFN
+
+    Construir ε-fecho dos estados.
+
+    Reescrever tabela de transições eliminando movimentos vazios.
+
+2. Implementar conversão AFN → AFD
+
+    Algoritmo do conjunto de estados (subconjuntos).
+
+    Produzir nova tabela determinística.
+
+3. Implementar minimização de AFD
+
+    Eliminar estados inalcançáveis.
+
+    Agrupar estados equivalentes.
+
+    Gerar AFD mínimo.
+
+**4. Visualização**
+
+1. Gerar visualização do autômato
+
+    Usar biblioteca de grafos para desenhar:
+
+        Estados como nós.
+
+        Transições como arestas (com rótulo do símbolo).
+
+        Estado inicial com destaque.
+
+        Estados finais com estilo diferenciado.
+
+2. Visualizar versões diferentes
+
+    Autômato original (do .xlsx).
+
+    Conversões (ε-AFN → AFN → AFD → AFD mínimo).
+
+**5. Integração**
+
+1. Integrar fluxo completo
+
+    Entrada: arquivo .xlsx.
+
+    Identificação do tipo de autômato.
+
+    Conversões automáticas conforme necessário.
+
+    Saída: visualizações interativas de cada versão.
+
+2. Adicionar testes e validação
+
+    Casos simples de cada tipo de autômato.
+
+    Casos maiores para validar escalabilidade.
+
+3. Empacotamento do projeto
+
+    Criar interface de linha de comando (CLI) ou interface gráfica simples.
+
+    Documentar uso (exemplo: python automato.py arquivo.xlsx).
